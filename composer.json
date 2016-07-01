@@ -1,0 +1,30 @@
+{
+  "name": "wpbp/CPT_Columns",
+  "description": "Improve the CPT list in the backend for your CPTs",
+  "license": "GPL-3.0",
+  "keywords": [
+    "wordpress",
+    "debug"
+  ],
+  "homepage": "https://github.com/WPBP/CPT_Columns",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Daniele Scasciafratte",
+      "email": "mte90net@gmail.com",
+      "homepage": "http://mte90.net"
+    }
+  ],
+  "minimum-stability": "stable",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/WPBP/CPT_Columns.git"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "CPT_Columns.php"
+    ]
+  }
+}
