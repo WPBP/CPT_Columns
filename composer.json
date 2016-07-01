@@ -4,7 +4,8 @@
   "license": "GPL-3.0",
   "keywords": [
     "wordpress",
-    "debug"
+    "post",
+    "custom post type"
   ],
   "homepage": "https://github.com/WPBP/CPT_Columns",
   "type": "library",
