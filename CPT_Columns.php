@@ -13,7 +13,7 @@
 //    Custom callback for the value
 //    Support for author type
 //    Support for sort for custom_value
-//Check the example!
+//Check the examples!
 
 /* Example
   //create an instance
@@ -287,10 +287,14 @@ if ( !class_exists( 'CPT_columns' ) ) {
 					}
 					break;
 				case 'custom_value':
-					if ( is_callable( $column[ 'callback' ] ) ) {
-						echo call_user_func( $column[ 'callback' ], $post_id );
+					if ( isset( $column[ 'callback' ] ) ) {
+						if ( is_callable( $column[ 'callback' ] ) ) {
+							echo call_user_func( $column[ 'callback' ], $post_id );
+						} else {
+							echo $column[ 'callback' ] . ' is not a callable object!';
+						}
 					} else {
-						echo $column[ 'callback' ] . ' is not a callable object!';
+						echo 'The \'callback\' parameter is not define!';
 					}
 					break;
 			}//end switch
@@ -318,16 +322,16 @@ if ( !class_exists( 'CPT_columns' ) ) {
 				$query->set( 'orderby', 'meta_value' );
 				//$query->set( 'meta_key', $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ] );
 				$query->set( 'meta_query', array(
-				    'relation' => 'OR',
-				    array(
-					'key' => $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ],
-					'compare' => 'NOT EXISTS',
-					'value' => ''
-				    ),
-				    array(
-					'key' => $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ],
-					'compare' => 'EXISTS',
-				    )
+					'relation' => 'OR',
+					array(
+						'key' => $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ],
+						'compare' => 'NOT EXISTS',
+						'value' => ''
+					),
+					array(
+						'key' => $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ],
+						'compare' => 'EXISTS',
+					)
 				) );
 			} else {
 				$keys = array_keys( ( array ) $this->cpt_sortable_columns );
@@ -353,17 +357,17 @@ if ( !class_exists( 'CPT_columns' ) ) {
 		 */
 		function add_column( $key, $args ) {
 			$def = array(
-			    'label' => 'column label',
-			    'size' => array( '80', '80' ),
-			    'taxonomy' => '',
-			    'meta_key' => '',
-			    'sortable' => false,
-			    'text' => '',
-			    'type' => 'native', //'native','post_meta','custom_tax',text
-			    'orderby' => 'meta_value',
-			    'prefix' => '',
-			    'suffix' => '',
-			    'def' => '',
+				'label' => 'column label',
+				'size' => array( '80', '80' ),
+				'taxonomy' => '',
+				'meta_key' => '',
+				'sortable' => false,
+				'text' => '',
+				'type' => 'native', //'native','post_meta','custom_tax',text
+				'orderby' => 'meta_value',
+				'prefix' => '',
+				'suffix' => '',
+				'def' => '',
 			);
 			$this->cpt_columns[ $key ] = array_merge( $def, $args );
 
