@@ -176,7 +176,7 @@ if ( !class_exists( 'CPT_columns' ) ) {
 						} else {
 							$defaults = array_merge( $defaults, $tmp );
 						}
-						$tmp = '';
+						$tmp = array();
 					}
 				}
 			}
@@ -297,7 +297,7 @@ if ( !class_exists( 'CPT_columns' ) ) {
 						echo 'The \'callback\' parameter is not define!';
 					}
 					break;
-			}//end switch
+			}
 			if ( in_array( $column[ 'type' ], array( 'text', 'thumb', 'post_meta', 'custom_tax' ) ) ) {
 				echo $column[ 'suffix' ];
 			}
