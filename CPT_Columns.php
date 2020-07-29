@@ -294,7 +294,7 @@ if ( !class_exists( 'CPT_columns' ) ) {
 							echo $column[ 'callback' ] . ' is not a callable object!';
 						}
 					} else {
-						echo 'The \'callback\' parameter is not define!';
+						echo 'The \'callback\' parameter is not defined!';
 					}
 					break;
 			}
