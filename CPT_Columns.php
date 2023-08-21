@@ -318,7 +318,7 @@ if ( !class_exists( 'CPT_columns' ) ) {
 			}
 
 			$orderby = $query->get( 'orderby' );
-			if ( (!empty( $orderby ) && isset( $this->cpt_sortable_columns[ $orderby ], $this->cpt_sortable_columns[ $orderby ][ 'type' ]  )) && $this->cpt_sortable_columns[ $orderby ][ 'type' ] === 'custom_value' ) {
+			if ( !is_array( $orderby ) && (!empty( $orderby ) && isset( $this->cpt_sortable_columns[ $orderby ], $this->cpt_sortable_columns[ $orderby ][ 'type' ]  )) && $this->cpt_sortable_columns[ $orderby ][ 'type' ] === 'custom_value' ) {
 				$query->set( 'orderby', 'meta_value' );
 				//$query->set( 'meta_key', $this->cpt_sortable_columns[ $orderby ][ 'meta_key' ] );
 				$query->set( 'meta_query', array(
